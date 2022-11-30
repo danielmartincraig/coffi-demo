@@ -3,8 +3,12 @@
   :url "http://example.com/FIXME"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
             :url "https://www.eclipse.org/legal/epl-2.0/"}
-  :dependencies [[org.clojure/clojure "1.11.1"]]
+  :dependencies [[org.clojure/clojure "1.11.1"] 
+                 [org.suskalo/coffi "0.5.357"]]
   :main ^:skip-aot coffi-demo.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
-                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
+                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"
+                                  "--add-modules=jdk.incubator.foreign" 
+                                  "--enable-native-access=ALL-UNNAMED"
+]}})
